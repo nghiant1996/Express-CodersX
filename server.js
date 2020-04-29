@@ -19,19 +19,19 @@ app.get('/', (request, response) => {
   response.send('I love CodersX');
 });
 
-// app.get('/todos',(req,res)=>{
-//   res.render('todos', {
-//     todos: todos
-//   });
-// });
+app.get('/todos',(req,res)=>{
+  res.render('todos', {
+    todos: todos
+  });
+});
 
-app.get('/todos', (req,res) => {
+app.get('/todos/search', (req,res) => {
   var q = req.query.q;
   var matchedItems = todos.filter(function(todo){
     return todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
-  res.render('todos',{
+  res.render('todos', {
     todos: matchedItems
   })
 });
