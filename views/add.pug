@@ -1,0 +1,12 @@
+h1 Add a new book
+
+form(action='/books/add', method='POST')
+  label
+    | Title
+    input(name='title', type='text', placeholder="Enter the book's name")
+  br
+  label
+    | About
+    input(name='desc', type='text', placeholder='Enter the description')
+  br
+  button Add 

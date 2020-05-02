@@ -1,0 +1,11 @@
+h1 All books
+
+ul 
+ each book in books
+  li
+   span= book.title
+   span &nbsp
+   a(href="/books/delete/" + book.id) Delete
+   span &nbsp
+   a(href="/books/update") Update
+   
