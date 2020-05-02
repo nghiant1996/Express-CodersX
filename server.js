@@ -11,6 +11,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
+const shortid = require('shortid');
 
 
 var todoList = db.get('todos').value();
@@ -52,11 +53,17 @@ app.get('/todos/create', (req,res) => {
 });
 
 app.post('/todos/create', (req,res) => {
+  req.body.id = shortid.generate();
   db.get('todos')
-    .push({id: todoList.length,
-                 text: req.body.name})
+    .push(req.body)
     .write();
   res.redirect('/todos');
+})
+
+app.get('/todos/:id/delete', (req, res) => {
+  var id = req.params.id;
+  db.get('todos').remove({id: id}).write();
+  res.redirect('/todos')
 })
 
 // listen for requests :)
