@@ -1,0 +1,8 @@
+h1 Transactions
+ul
+ each tran in trans
+  li
+   span= tran.userId + tran.bookId + tran.isCompleted
+   span &nbsp
+   a(href='/transactions/' + tran.id + '/complete') Complete
+  
