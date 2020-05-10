@@ -1,12 +1,14 @@
-h1 Add a new book
+extends ../layouts/common.pug
+block content
+  h1 Add a new book
 
-form(action='/books/create', method='POST')
-  label
-    | Title
-    input(name='title', type='text', placeholder="Enter the book's name")
-  br
-  label
-    | About
-    input(name='desc', type='text', placeholder='Enter the description')
-  br
-  button Add 
+  form(action='/books/create', method='POST')
+    label
+      | Title
+      input(name='title', type='text', placeholder="Enter the book's name")
+    br
+    label
+      | About
+      input(name='desc', type='text', placeholder='Enter the description')
+    br
+    button Add 

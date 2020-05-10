@@ -23,6 +23,26 @@ module.exports.postCreate = (req,res) => {
 
 module.exports.complete = (req,res) => {
   var id = req.params.id;
+  
+  var errors = [];
+  
+  var idList = db.get('transactions').value()
+                  .map(function(item) {
+                    return item.id
+                  });
+  
+  if(idList.indexOf(id) === -1){
+    errors.push('id doesn not exsist');
+  }
+  
+  if(errors.length){
+    res.render('transactions/transactions',{
+       errors: errors,
+       trans: db.get('transactions').value()
+    })
+  }
+  
+  
   db.get('transactions').find({id: id})
     .assign({isCompleted: true})
     .write();

@@ -1,11 +1,12 @@
-h1 All users
-ul 
- each user in users
-  li
-   span= user.name
-   span &nbsp
-   a(href="/users/delete/"+ user.id) Delete
-   span &nbsp
-   a(href="/users/update/"+ user.id) Update
-   
-  
+extends ../layouts/common.pug
+block content
+  h1 All users
+  ul 
+   each user in users
+    li
+     span= user.name
+     span &nbsp
+     a(href="/users/delete/"+ user.id) Delete
+     span &nbsp
+     a(href="/users/update/"+ user.id) Update
+
