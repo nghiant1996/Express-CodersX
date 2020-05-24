@@ -14,19 +14,62 @@
   "users": [
     {
       "name": "Nghia",
-      "id": "FdBG4Ifxv"
+      "id": "FdBG4Ifxv",
+      "email": "nghia@gmail.com",
+      "password": "$2b$10$2DteD.hehQetnaAo/Hn/4.irNqm2wzO2kGVBBfq0QQ.aIrH8pS2cq",
+      "isAdmin": true
     },
     {
       "name": "Thuy",
-      "id": "ajiE5UaLf"
+      "id": "ajiE5UaLf",
+      "email": "thuy@gmail.com",
+      "password": "$2b$10$2DteD.hehQetnaAo/Hn/4.irNqm2wzO2kGVBBfq0QQ.aIrH8pS2cq",
+      "isAdmin": false
+    },
+    {
+      "name": "Cuong",
+      "email": "cuong@gmail.com",
+      "id": "NUk7xWSIY",
+      "password": "$2b$10$2DteD.hehQetnaAo/Hn/4.irNqm2wzO2kGVBBfq0QQ.aIrH8pS2cq",
+      "isAdmin": false
     }
   ],
   "transactions": [
     {
-      "userId": "Nghia",
-      "bookId": "Toan lop 2",
-      "id": "ScB6IE0q-",
+      "userId": "ajiE5UaLf",
+      "bookId": "Toan lop 1",
+      "id": "kHu7zF9ir",
       "isCompleted": true
+    },
+    {
+      "userId": "ajiE5UaLf",
+      "bookId": "Toan lop 2",
+      "id": "BCAvYOXFi",
+      "isCompleted": false
+    },
+    {
+      "userId": "ajiE5UaLf",
+      "bookId": "Toan lop 2",
+      "id": "Z9mxj9yoF",
+      "isCompleted": false
+    },
+    {
+      "userId": "ajiE5UaLf",
+      "bookId": "Toan lop 1",
+      "id": "1uAK5-uCD",
+      "isCompleted": false
+    },
+    {
+      "userId": "FdBG4Ifxv",
+      "bookId": "Toan lop 1",
+      "id": "S5tR2-tA5",
+      "isCompleted": false
+    },
+    {
+      "userId": "FdBG4Ifxv",
+      "bookId": "Toan lop 2",
+      "id": "ClfMEzLUE",
+      "isCompleted": false
     }
   ]
 }

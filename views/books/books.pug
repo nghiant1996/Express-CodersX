@@ -1,12 +1,18 @@
 extends ../layouts/common.pug
 block content
   h1 All books
-
-  ul 
-   each book in books
-    li
-     span= book.title
-     span &nbsp
-     a(href="/books/delete/" + book.id) Delete
-     span &nbsp
-     a(href="/books/update/" + book.id) Update
+  
+  table.table
+    tr
+      th Title
+      th Delete
+      th Update
+    each book in books
+      tr
+        td= book.title
+        td 
+          a(href="/books/delete/" + book.id) Delete
+        td 
+          a(href="/books/update/" + book.id) Update
+          
+  

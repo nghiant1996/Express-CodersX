@@ -2,14 +2,20 @@ extends ../layouts/common.pug
 block content
   h1 Transactions
   
+  if errors
+    each error in errors
+      .alert.alert-danger= error
+      
   table.table
     tr
       th User Id
       th Book Id
-      th Completed
+      th Completion
     each tran in trans
       tr 
         td= tran.userId
         td= tran.bookId
         td= tran.isCompleted
+        td
+          a(href='/transactions/' + tran.id + '/complete') Complete
   

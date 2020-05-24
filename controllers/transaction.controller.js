@@ -2,8 +2,19 @@ var db = require('../db.js');
 var shortid = require('shortid');
 
 module.exports.index = (req,res) => {
-  res.render('transactions/transactions.pug',{
+  
+  var user = db.get('users').find({id: req.cookies.userId}).value();
+  var id = user.id;
+  if(user.isAdmin === true){
+    res.render('transactions/manage.pug',{
     trans: db.get('transactions').value()
+  });
+    return
+  }
+  
+  var transactions = db.get('transactions').filter({userId: id}).value();
+  res.render('transactions/transactions.pug',{
+    trans: transactions
   })
 };
 

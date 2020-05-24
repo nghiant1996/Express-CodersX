@@ -6,28 +6,58 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-var shortid = require('shortid');
-var db = require('./db.js');
+
+var cookieParser = require('cookie-parser');
+
+
 
 var userRoute = require('./routes/user.route');
 var bookRoute = require('./routes/book.route');
-var transactionRoute = require('./routes/transaction.route')
+var transactionRoute = require('./routes/transaction.route');
+var authRoute = require('./routes/auth.route');
 
+var authMiddleware = require('./middlewares/auth.middleware');
 
 
 app.set('views','./views');
 app.set('view engine', 'pug');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
+
+
+// app.use(function(req, res, next) {
+//  res.clearCookie('userId'); 
+//  console.log(req.cookies);
+// 	next();
+// })
 
 app.get('/', (req, res) => {
   res.send('My name is Nghia');
 });
 
 
-app.use('/books', bookRoute);
-app.use('/users', userRoute);
-app.use('/transactions', transactionRoute);
+app.use('/books', authMiddleware.requireAuth, bookRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/transactions', authMiddleware.requireAuth, transactionRoute);
+
+app.use('/auth', authRoute);
+
+// app.use(function(req,res,next){
+//   if(req.cookies.count === undefined){
+//     res.cookie('count', 0);
+//   }else {
+//     var count = parseInt(req.cookies.count) + 1;
+//     res.cookie('count', count);
+//   }
+//   console.log(count);
+//   next();
+  
+// })
+
+
+
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

@@ -1,12 +1,19 @@
 extends ../layouts/common.pug
 block content
   h1 All users
-  ul 
-   each user in users
-    li
-     span= user.name
-     span &nbsp
-     a(href="/users/delete/"+ user.id) Delete
-     span &nbsp
-     a(href="/users/update/"+ user.id) Update
-
+  
+  a.btn.btn-primary(href='/users/create') New 
+  
+  table.table.mt-2
+    tr
+      th Name
+      th Delete
+      th Update
+    each user in users
+      tr 
+        td= user.name
+        td 
+          a(href="/users/delete/"+ user.id) Delete
+        td
+          a(href="/users/update/"+ user.id) Update
+          

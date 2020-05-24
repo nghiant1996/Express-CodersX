@@ -3,4 +3,14 @@ html
     link(rel="icon", type="image/png", href="https://cdn.glitch.com/b7e62ba9-5bff-4138-a533-0efec92f8f62%2Ffavicon.png?v=1588926955130", sizes="64x64")
     link(rel="stylesheet" , href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
   body
-    block content 
+    ul.nav.nav-tabs
+      li.nav-item
+        a.nav-link(href='/') Home
+      li.nav-item
+        a.nav-link(href='/users') User
+      li.nav-item
+        a.nav-link(href='/books') Book
+      li.nav-item
+        a.nav-link(href='/transactions') Transaction
+    .container
+     block content 

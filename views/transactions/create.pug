@@ -1,16 +1,14 @@
 extends ../layouts/common.pug
 block content
-
   h1 Create Transaction
   form(action='/transactions/create', method='POST')
-  label(for='user') Choose User
-    select(id'user', name='userId')
-     each user in users
-      option(value=user.name)= user.name
-    br
-    label(for='book') Choose Book
-    select(id='book', name='bookId')
-     each book in books
-      option(value=book.title)= book.title
-    br
-    button(class="btn btn-primary") Create 
+    .form-group
+      label(for='user') Choose User
+      select#user.form-control(name='userId')
+       each user in users
+        option(value=user.id)= user.id
+      label(for='book') Choose Book
+      select#book.form-control(name='bookId')
+       each book in books
+        option(value=book.title)= book.title
+    button.btn.btn-primary Create 

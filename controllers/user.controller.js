@@ -13,6 +13,22 @@ module.exports.create = (req,res) => {
 
 module.exports.postCreate = (req,res) => {
   req.body.id = shortid.generate();
+  req.body.password = '123123';
+  
+  var email = req.body.email;
+  
+  var user = db.get('users').find({email: email}).value();
+  
+  if(user){
+    res.render('users/create', {
+      errors:[
+        'User already exists with this email'
+      ],
+      values: req.body
+    })
+    return
+  }
+  
   db.get('users').push(req.body).write();
   res.redirect('/users');
 };

@@ -4,13 +4,16 @@ var db = require('../db.js');
 
 var router = express.Router();
 var controller = require('../controllers/user.controller.js');
+var validate = require('../validations/user.validate.js');
+
+// var authMiddleware = require('../middlewares/auth.middleware.js');
 
 router.get('/', controller.index);
 //Create 
 
 router.get('/create', controller.create);
 
-router.post('/create', controller.postCreate);
+router.post('/create', validate.postCreate, controller.postCreate);
 
 //Delete
 
