@@ -24,10 +24,11 @@
       "id": "ajiE5UaLf",
       "email": "thuy@gmail.com",
       "password": "$2b$10$2DteD.hehQetnaAo/Hn/4.irNqm2wzO2kGVBBfq0QQ.aIrH8pS2cq",
-      "isAdmin": false
+      "isAdmin": false,
+      "avatar": "http://res.cloudinary.com/nghiant/image/upload/v1591579086/trej7jxssvjzutf9ptcb.jpg"
     },
     {
-      "name": "Cuong",
+      "name": "Cuonggg",
       "email": "cuong@gmail.com",
       "id": "NUk7xWSIY",
       "password": "$2b$10$2DteD.hehQetnaAo/Hn/4.irNqm2wzO2kGVBBfq0QQ.aIrH8pS2cq",
