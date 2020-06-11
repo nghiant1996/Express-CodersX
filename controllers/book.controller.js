@@ -2,8 +2,33 @@ var db = require('../db.js');
 var shortid = require('shortid');
 
 module.exports.index = (req, res) => {
+  
+  var page = parseInt(req.query.page) || 1;
+  
+  var perPage = 6;
+  var drop = (page - 1)*perPage;
+  //drop trong thu vien Lodash
+  var results = {};
+  results.result = db.get('books')
+                     .drop(drop)
+                     .take(perPage)
+                     .value();
+  results.previous = {
+    page: page - 1
+  };
+  
+  results.next = {
+    page: page + 1
+  };
+  
+  results.numberPages = [results.previous.page + 1, results.previous.page + 2, results.previous.page + 3]
+  
   res.render('books/books',{
-    books: db.get('books').value()
+    books: results.result,
+    pre: results.previous.page,
+    next: results.next.page,
+    numberPages: results.numberPages
+    
   })
 };
 

@@ -2,17 +2,23 @@ extends ../layouts/common.pug
 block content
   h1 All books
   
-  table.table
-    tr
-      th Title
-      th Delete
-      th Update
+  .d-flex.flex-wrap.justify-content-center
     each book in books
-      tr
-        td= book.title
-        td 
-          a(href="/books/delete/" + book.id) Delete
-        td 
-          a(href="/books/update/" + book.id) Update
+      .card.mr-1.mb-1(style='width: 15rem;')
+        img.card-img-top(src= book.image, alt='Card image cap')
+        .card-body
+          h5.card-title= book.name
+          p.card-text= book.description
+          a.btn.btn-primary(href='#') Hide
           
-  
+    nav(aria-label='Search result page')
+      ul.pagination
+        li.page-item
+          a.page-link(href=`?page=${pre}`) Previous
+        each number in numberPages
+          li.page-item
+            a.page-link(href=`?page=${number}`)= number
+        li.page-item
+          a.page-link(href=`?page=${next}`) Next
+
+

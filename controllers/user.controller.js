@@ -1,14 +1,5 @@
 var db = require('../db.js');
 var shortid = require('shortid');
-var cloudinary = require('cloudinary').v2;
-
-
-cloudinary.config({ 
-  cloud_name: process.env.CLOUD_NAME, 
-  api_key: process.env.API_KEY, 
-  api_secret: process.env.API_SECRET
-});
-
 
 module.exports.index = (req,res) => {
   res.render('users/users.pug', {
@@ -50,7 +41,6 @@ module.exports.delete = (req,res) => {
 
 module.exports.update = (req,res) => {
   var id = req.params.id;
-  console.log(id);
   res.render('users/update',{
     id: id
   }) 
@@ -65,35 +55,3 @@ module.exports.postUpdate = (req,res) => {
   res.redirect('/users')
   
 };
-
-module.exports.profile = (req,res) => {
-  var id = req.params.id;
-  var user = db.get('users').find({id: id}).value();
-  res.render('users/profile.pug', {
-    user: user
-  })
-}
-
-module.exports.avatar = (req, res) => {
-  var id = req.params.id;
-  var user = db.get('users').find({id: id}).value();
-  res.render('users/avatar.pug', {
-    user: user
-  })
-}
-
-module.exports.postAvatar = (req,res) => {
-  var path = req.file.path;
-  var id = req.params.id;
-  cloudinary.uploader.upload(path, function(error, result) { 
-    db.get('users').find({id: id})
-    .assign({avatar: result.url}).write();
-    
-    var user = db.get('users').find({id: id}).value();
-    console.log(user)
-    
-    res.render('users/profile',{
-      user: user
-    })
-  });
-}

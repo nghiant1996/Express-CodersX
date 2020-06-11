@@ -3,8 +3,6 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-require('dotenv').config();
-
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
@@ -39,7 +37,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/books', authMiddleware.requireAuth, bookRoute);
+// app.use('/books', authMiddleware.requireAuth, bookRoute);
+app.use('/books',bookRoute);
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/transactions', authMiddleware.requireAuth, transactionRoute);
 
