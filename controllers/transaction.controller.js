@@ -3,7 +3,7 @@ var shortid = require('shortid');
 
 module.exports.index = (req,res) => {
   
-  var user = db.get('users').find({id: req.cookies.userId}).value();
+  var user = db.get('users').find({id: req.signedCookies.userId}).value();
   var id = user.id;
   if(user.isAdmin === true){
     res.render('transactions/manage.pug',{

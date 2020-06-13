@@ -2,6 +2,7 @@ var db = require('../db.js');
 var shortid = require('shortid');
 
 module.exports.index = (req, res) => {
+  console.log()
   
   var page = parseInt(req.query.page) || 1;
   

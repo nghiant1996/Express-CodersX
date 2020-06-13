@@ -17,16 +17,17 @@ var userRoute = require('./routes/user.route');
 var bookRoute = require('./routes/book.route');
 var transactionRoute = require('./routes/transaction.route');
 var authRoute = require('./routes/auth.route');
+var cartRoute = require('./routes/cart.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
-
+var sessionMiddleware = require('./middlewares/session.middleware');
 
 app.set('views','./views');
 app.set('view engine', 'pug');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser('da8oqh12JA')); //'da8oqh12JA': secret, phuc vu cho signed Cookie, doc trong tai lieu
-
+app.use(sessionMiddleware);
 
 // app.use(function(req, res, next) {
 //  res.clearCookie('userId'); 
@@ -39,11 +40,12 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/books', bookRoute);
+app.use('/books',bookRoute);
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/transactions', authMiddleware.requireAuth, transactionRoute);
 
 app.use('/auth', authRoute);
+app.use('/cart', cartRoute)
 
 // app.use(function(req,res,next){
 //   if(req.cookies.count === undefined){

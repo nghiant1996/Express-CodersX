@@ -2,6 +2,7 @@ html
   head
     link(rel="icon", type="image/png", href="https://cdn.glitch.com/b7e62ba9-5bff-4138-a533-0efec92f8f62%2Ffavicon.png?v=1588926955130", sizes="64x64")
     link(rel="stylesheet" , href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    script(src='https://kit.fontawesome.com/4fde723f9d.js', crossorigin='anonymous')
   body
     ul.nav.nav-tabs
       li.nav-item
@@ -12,7 +13,11 @@ html
         a.nav-link(href='/books') Book
       li.nav-item
         a.nav-link(href='/transactions') Transaction
+      li.nav-item.d-flex.align-items-center
+        i(style="color: green").fas.fa-shopping-cart
+        if cartCount
+          span.nav-link= cartCount
       if user
-        p.pt-2= user.name
+        span.pt-2= user.name
     .container
-     block content 
+       block content 

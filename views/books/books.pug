@@ -9,7 +9,7 @@ block content
         .card-body
           h5.card-title= book.name
           p.card-text= book.description
-          a.btn.btn-primary(href='#') Hide
+          a.btn.btn-primary(href='/cart/add/'+book.id) Add to cart
           
   .d-flex.justify-content-center
     nav(aria-label='Search result page')
